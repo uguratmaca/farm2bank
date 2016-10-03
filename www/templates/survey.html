@@ -1,0 +1,91 @@
+<ion-view view-title="Sorular">
+  <ion-nav-bar>
+    <ion-nav-back-button class="button-clear">
+      <i class="ion-arrow-left-c"></i> Geri
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-slide-box on-slide-changed="slideChanged(index)" class="page">
+      <ion-slide ng-repeat="quest in surveyQuestions">
+        <div class="list card ">
+          <div class="item">
+            <h2>{{quest.Question}}</h2></div>
+          <div ng-repeat="ans in quest.Answer" class="item item-body" ng-if="quest.Answer.length < 6">
+            <button class="button button-outline button-calm" ng-if="!getSelected(quest.Id,ans.Id)"
+                    ng-click="saveAnswer(ans.Id,quest);" value="ans.Id">
+              {{ans.Name}}
+            </button>
+            <button class="button button-calm" ng-if="getSelected(quest.Id,ans.Id)"
+                    ng-click="saveAnswer(ans.Id,quest);" value="ans.Id">
+              {{ans.Name}}
+            </button>
+          </div>
+          <div ng-if="quest.Answer.length > 5" class="item item-body">
+            <select
+              class="ion-input-select" ng-model="model.selected" ng-change="saveAnswer(model.selected, quest);">
+              <option ng-repeat="ans in quest.Answer"
+                      value="{{ans.Id}}" ng-selected="ans.Id == getSelectedOption(quest.Id,ans.Id)">
+                {{ans.Name}}
+              </option>
+            </select>
+          </div>
+          <!--<div class="item" ng-if="hasAnswer(quest.Id)">-->
+          <!--<button class="button button-assertive"-->
+          <!--ng-click="clearAnswer(quest.Id);">-->
+          <!--Temizle-->
+          <!--</button>-->
+          <!--</div>-->
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>
+<style>
+  .page {
+    height: 100% !important;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .ion-input-select--large,
+  .ion-input-select,
+  select {
+    -webkit-appearance: none;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    border: thin solid #dddddd;
+    font-weight: 300;
+    display: inline;
+    vertical-align: middle;
+    color: #333;
+    padding: auto 0;
+    overflow: hidden;
+    box-sizing: border-box;
+
+  }
+
+  .ion-input-select {
+    width: 200px;
+    font-size: 1rem;
+    background-image: url(img/arrows.png);
+    text-indent: 20px;
+    padding: .5rem 0;
+  }
+
+  option {
+    background: #444;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  :focus {
+    outline: none;
+  }
+</style>

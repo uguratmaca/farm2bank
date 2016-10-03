@@ -1,0 +1,25 @@
+<ion-view view-title="Kredi & Sigorta Başvurusu">
+  <ion-content>
+
+    <div class="list">
+      <label class="item item-input">
+        <input ng-model="credit.tckn" min="11" max="11" type="number" placeholder="TC Kimlik No">
+      </label>
+      <label class="item item-input">
+        <input ng-model="credit.name" type="text" placeholder="İsim">
+      </label>
+      <label class="item item-input">
+        <input ng-model="credit.surname" type="text" placeholder="Soyisim">
+      </label>
+      <label class="item item-input">
+        <input ng-model="credit.phone" type="tel" placeholder="Phone Number">
+      </label>
+      <label class="item item-input">
+        <textarea ng-model="credit.comment" placeholder="Yorum"></textarea>
+      </label>
+      <button class="item button button-full button-positive" ng-click="save()">Gönder</button>
+      <button class="item button button-full button-assertive" ng-click="cancel()">Vazgeç</button>
+    </div>
+
+  </ion-content>
+</ion-view>

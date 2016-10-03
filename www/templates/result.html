@@ -1,0 +1,27 @@
+<ion-view view-title="Öneri">
+  <ion-content>
+    <div class="list card">
+
+      <div class="item">
+        <h2>{{resultProd.Name}}</h2>
+      </div>
+
+      <div class="item item-image backgr">
+        <img src="img/Result/{{resultProd.Id}}.png">
+      </div>
+
+      <button class="button button-full button-positive" ng-click="next()">
+        Ürünü Ekmeyi Düşünüyorum
+      </button>
+      <button class="button button-full button-assertive" ng-click="back()">
+        Tekrar Dene
+      </button>
+
+    </div>
+  </ion-content>
+</ion-view>
+<style>
+  h2 {
+    text-align: center;
+  }
+</style>
